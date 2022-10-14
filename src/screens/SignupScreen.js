@@ -8,21 +8,23 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+// import axios from 'axios';
 
 const SignupScreen = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dob, setDob] = useState("");
-  const [gender, setGender] = useState("");
-  const [language, setLanguage] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("naq");
+  const [email, setEmail] = useState("naqi@gmail.com");
+  const [dob, setDob] = useState("12334");
+  const [gender, setGender] = useState("male");
+  const [language, setLanguage] = useState("eng");
+  const [password, setPassword] = useState("12345");
+  const [confirmpassword, setConfirmPassword] = useState("12345");
+  const [phone, setPhone] = useState("0277372637");
   const [loader, setLoader] = useState(false);
+  const apiBaseURL = 'https://getboxxie.com/hannan/light_my_eye/public/api/';
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setLoader(true);
-    const url = `${apiActiveURL}register`;
+    const url = `${apiBaseURL}register`;
     let ApiParam = {
       name: name,
       email: email,
@@ -39,14 +41,33 @@ const SignupScreen = () => {
       url,
     };
 
-    axios(options)
-      .then((res) => {
-        console.log("registered user", res);
-      })
-      .then(() => setLoader(false))
-      .catch((error) => {
-        console.log(error);
-      });
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      // mode: 'cors', // no-cors, *cors, same-origin
+      // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      // credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      // redirect: 'follow', // manual, *follow, error
+      // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(ApiParam) // body data type must match "Content-Type" header
+    });
+    console.log(response, "response.json()");
+
+    // axios(options)
+    //   .then((res) => {
+    //     console.log("registered user", res);
+    //   })
+    //   .then(() => setLoader(false))
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+ 
+    
+    
+    // };
   };
   return (
     <View style={styles.container}>

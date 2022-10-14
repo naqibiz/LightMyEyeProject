@@ -7,8 +7,10 @@ const Stack = createNativeStackNavigator();
 
 const AppRoutes = () => {
   return (
-    <NavigationContainer>
+     <NavigationContainer>
+      <Stack.Navigator>
       <Stack.Screen name="HomeScreen" component={Home} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
