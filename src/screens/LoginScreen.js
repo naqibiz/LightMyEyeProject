@@ -8,9 +8,15 @@ import {
   View,
 } from 'react-native';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const onSubmit = () => {
+    if (!email) return console.log('email fields are required');
+    if (!password) return console.log('password fields are required');
+    return navigation.navigate('Profile');
+  };
   return (
     <View style={styles.container}>
       <ImageBackground

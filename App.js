@@ -1,18 +1,11 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from './src/screens/HomeScreen';
-import Signup from './src/screens/SignupScreen';
-
-const Stack = createNativeStackNavigator();
+import {Text, View} from 'react-native';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-      <Stack.Screen name="HomeScreen" component={Signup} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View>
+      <Text> Main App Screen</Text>
+    </View>
   );
 };
 
