@@ -20,10 +20,12 @@ const LoginScreen = props => {
   const apiBaseURL = 'https://getboxxie.com/hannan/light_my_eye/public/api/';
 
   const onSubmit = async () => {
+    if (!email) return console.log('email fields are required');
+    if (!password) return console.log('password fields are required');
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      props?.navigation?.push('home');
+      props?.navigation?.push('Profile');
     }, 3000);
     // try {
     //   const url = `${apiBaseURL}login`;
@@ -47,16 +49,6 @@ const LoginScreen = props => {
     //   console.error(error.message);
     // }
   };
-  useEffect(() => {
-    if (loginRes && loginRes?.status == 200) {
-      if (loginRes?.status == 200) {
-        setLoading(false);
-        props?.navigation?.push('home');
-      }
-    }
-
-    return () => {};
-  }, [loginRes]);
 
   return (
     <ScrollView style={styles.container}>

@@ -7,7 +7,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const Profile = () => {
+const Profile = ({navigation}) => {
+  const onSubmit = () => {
+    navigation.navigate('ActiveVolunteers');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.username}>Welcome Muhammad Naqi</Text>

@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -16,14 +16,20 @@ const Home = () => {
         style={styles.image}></ImageBackground>
       <Text style={styles.identitytxt}>A Distant Identity</Text>
       <View style={styles.buttoncontainer}>
-        <TouchableOpacity style={styles.homebtn}>
+        <TouchableOpacity
+          activeOpacity={0.9}
+          style={styles.homebtn}
+          onPress={() => navigation.navigate('SignupBlind')}>
           <Text style={styles.signuptxt}>Unsighted and Low-Vision</Text>
           <Text style={styles.subtxtsignup}>
             My Vision needs your assistance
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.homebtn}>
+        <TouchableOpacity
+          activeOpacity={0.9}
+          style={styles.homebtn}
+          onPress={() => navigation.navigate('SignupVolunteer')}>
           <Text style={styles.signuptxt}>Sighted</Text>
           <Text style={styles.subtxtsignup}>
             I'd like to offer my eyeslight
