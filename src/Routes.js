@@ -7,6 +7,7 @@ import SignupVolunteer from './screens/SignupScreenTwo';
 import LoginScreen from './screens/LoginScreen';
 import Profile from './screens/ProfileScreen';
 import ActiveVolunteers from './screens/ActiveVolunteers';
+import SplashScreen from './screens/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,11 @@ const AppRoutes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="HomeScreen"
           component={Home}

@@ -9,9 +9,12 @@ import {
   TouchableOpacity,
   View,
   SafeAreaView,
+  ActivityIndicator,
+  Pressable,
+  ScrollView,
 } from 'react-native';
 
-const SignupVolunteer = ({navigation}) => {
+const SignupVolunteer = props => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [dob, setDob] = useState('');
@@ -33,11 +36,15 @@ const SignupVolunteer = ({navigation}) => {
     if (!password) return console.log('password fields are required');
     if (!confirmpassword)
       return console.log('confirmpassword fields are required');
-    return navigation.navigate('LoginScreen');
+    setLoader(true);
+    setTimeout(() => {
+      setLoader(false);
+      props?.navigation?.push('LoginScreen');
+    }, 3000);
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.topheading}>Sighted Sign up</Text>
       <View style={styles.innerContainer}>
         <SafeAreaView>
@@ -96,12 +103,30 @@ const SignupVolunteer = ({navigation}) => {
               activeOpacity={0.7}
               style={styles.signupbtn}
               onPress={() => onSubmit()}>
-              <Text style={styles.signuptxt}>Sign Up</Text>
+              {loader ? (
+                <ActivityIndicator size="large" color="#5D63F9" />
+              ) : (
+                <Text style={styles.signuptxt}>Sign Up</Text>
+              )}
             </TouchableOpacity>
+
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text style={styles.signuptxt}>Already have an account?</Text>
+              <Pressable
+                onPress={() => props.navigation.navigate('LoginScreen')}>
+                <Text style={styles.alreadytxt}>Login</Text>
+              </Pressable>
+            </View>
           </KeyboardAvoidingView>
         </SafeAreaView>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -111,14 +136,14 @@ const styles = StyleSheet.create({
     height: 730,
   },
   innerContainer: {
-    marginTop: 22,
+    marginTop: 18,
   },
   topheading: {
     color: '#fff',
     alignSelf: 'center',
     fontSize: 25,
     fontWeight: 'bold',
-    marginTop: 25,
+    marginTop: 18,
   },
   inputarea: {
     backgroundColor: '#fff',

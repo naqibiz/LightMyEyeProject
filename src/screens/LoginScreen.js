@@ -88,7 +88,8 @@ const LoginScreen = props => {
             justifyContent: 'center',
           }}>
           <Text style={styles.signuptxt}>Already have an account?</Text>
-          <Pressable onPress={() => props.navigation.navigate('signup')}>
+          <Pressable
+            onPress={() => props.navigation.navigate('SignupVolunteer')}>
             <Text style={styles.alreadytxt}>sign up</Text>
           </Pressable>
         </View>

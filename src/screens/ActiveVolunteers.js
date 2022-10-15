@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   },
   activeuser: {
     fontSize: 17,
+    fontWeight: '700',
     alignSelf: 'center',
     textAlign: 'center',
   },

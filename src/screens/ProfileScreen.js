@@ -14,7 +14,7 @@ const Profile = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.username}>Welcome Muhammad Naqi</Text>
+      <Text style={styles.username}>Welcome</Text>
       <Text style={styles.infotxt}>
         Get help for the visually impaired and low vision
       </Text>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   username: {
     color: '#fff',
-    fontSize: 23,
+    fontSize: 35,
     alignSelf: 'center',
     marginTop: 70,
     fontWeight: '700',
